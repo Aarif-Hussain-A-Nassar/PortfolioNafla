@@ -22,57 +22,51 @@ import { FiPhone, FiAtSign } from 'react-icons/fi';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 
 import { ThemeContext } from '../../contexts/ThemeContext';
-
 import { socialsData } from '../../data/socialsData';
 import { contactsData } from '../../data/contactsData';
 import './Contacts.css';
 
 function Contacts() {
     const [open, setOpen] = useState(false);
-
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-
     const [success, setSuccess] = useState(false);
     const [errMsg, setErrMsg] = useState('');
 
     const { theme } = useContext(ThemeContext);
 
     const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
+        if (reason === 'clickaway') return;
         setOpen(false);
     };
 
-    const useStyles = makeStyles((t) => ({
+    const useStyles = makeStyles(() => ({
         input: {
-            border: `4px solid ${theme.primary80}`,
-            backgroundColor: `${theme.secondary}`,
-            color: `${theme.tertiary}`,
+            border: `4px solid ${theme.tertiary}`,
+            backgroundColor: `${theme.primary}`,
+            color: `${theme.secondary}`,
             fontFamily: 'var(--primaryFont)',
             fontWeight: 500,
             transition: 'border 0.2s ease-in-out',
             '&:focus': {
-                border: `4px solid ${theme.primary600}`,
+                border: `4px solid ${theme.tertiary}`,
             },
         },
         message: {
-            border: `4px solid ${theme.primary80}`,
-            backgroundColor: `${theme.secondary}`,
-            color: `${theme.tertiary}`,
+            border: `4px solid ${theme.tertiary}`,
+            backgroundColor: `${theme.primary}`,
+            color: `${theme.secondary}`,
             fontFamily: 'var(--primaryFont)',
             fontWeight: 500,
             transition: 'border 0.2s ease-in-out',
             '&:focus': {
-                border: `4px solid ${theme.primary600}`,
+                border: `4px solid ${theme.tertiary}`,
             },
         },
         label: {
-            backgroundColor: `${theme.secondary}`,
-            color: `${theme.primary}`,
+            backgroundColor: `${theme.primary}`,
+            color: `${theme.secondary}`,
             fontFamily: 'var(--primaryFont)',
             fontWeight: 600,
             fontSize: '0.9rem',
@@ -88,18 +82,18 @@ function Contacts() {
             alignItems: 'center',
             justifyContent: 'center',
             fontSize: '21px',
-            backgroundColor: theme.primary,
-            color: theme.secondary,
+            backgroundColor: theme.secondary,
+            color: theme.primary,
             transition: '250ms ease-in-out',
             '&:hover': {
                 transform: 'scale(1.1)',
-                color: theme.secondary,
+                color: theme.primary,
                 backgroundColor: theme.tertiary,
             },
         },
         detailsIcon: {
-            backgroundColor: theme.primary,
-            color: theme.secondary,
+            backgroundColor: theme.secondary,
+            color: theme.primary,
             borderRadius: '50%',
             width: '45px',
             height: '45px',
@@ -111,17 +105,17 @@ function Contacts() {
             flexShrink: 0,
             '&:hover': {
                 transform: 'scale(1.1)',
-                color: theme.secondary,
+                color: theme.primary,
                 backgroundColor: theme.tertiary,
             },
         },
         submitBtn: {
-            backgroundColor: theme.primary,
-            color: theme.secondary,
+            backgroundColor: theme.secondary,
+            color: theme.primary,
             transition: '250ms ease-in-out',
             '&:hover': {
                 transform: 'scale(1.08)',
-                color: theme.secondary,
+                color: theme.primary,
                 backgroundColor: theme.tertiary,
             },
         },
@@ -131,20 +125,12 @@ function Contacts() {
 
     const handleContactForm = (e) => {
         e.preventDefault();
-
         if (name && email && message) {
             if (isEmail(email)) {
-                const responseData = {
-                    name: name,
-                    email: email,
-                    message: message,
-                };
-
-                axios.post(contactsData.sheetAPI, responseData).then((res) => {
-                    console.log('success');
+                const responseData = { name, email, message };
+                axios.post(contactsData.sheetAPI, responseData).then(() => {
                     setSuccess(true);
                     setErrMsg('');
-
                     setName('');
                     setEmail('');
                     setMessage('');
@@ -164,10 +150,10 @@ function Contacts() {
         <div
             className='contacts'
             id='contacts'
-            style={{ backgroundColor: theme.secondary }}
+            style={{ backgroundColor: theme.primary }}
         >
             <div className='contacts--container'>
-                <h1 style={{ color: theme.primary }}>Contacts</h1>
+                <h1 style={{ color: theme.secondary }}>Contacts</h1>
                 <div className='contacts-body'>
                     <div className='contacts-form'>
                         <form onSubmit={handleContactForm}>
@@ -185,10 +171,7 @@ function Contacts() {
                                 />
                             </div>
                             <div className='input-container'>
-                                <label
-                                    htmlFor='Email'
-                                    className={classes.label}
-                                >
+                                <label htmlFor='Email' className={classes.label}>
                                     Email
                                 </label>
                                 <input
@@ -201,10 +184,7 @@ function Contacts() {
                                 />
                             </div>
                             <div className='input-container'>
-                                <label
-                                    htmlFor='Message'
-                                    className={classes.label}
-                                >
+                                <label htmlFor='Message' className={classes.label}>
                                     Message
                                 </label>
                                 <textarea
@@ -218,10 +198,7 @@ function Contacts() {
                             </div>
 
                             <div className='submit-btn'>
-                                <button
-                                    type='submit'
-                                    className={classes.submitBtn}
-                                >
+                                <button type='submit' className={classes.submitBtn}>
                                     <p>{!success ? 'Send' : 'Sent'}</p>
                                     <div className='submit-icon'>
                                         <AiOutlineSend
@@ -230,17 +207,13 @@ function Contacts() {
                                                 animation: !success
                                                     ? 'initial'
                                                     : 'fly 0.8s linear both',
-                                                position: success
-                                                    ? 'absolute'
-                                                    : 'initial',
+                                                position: success ? 'absolute' : 'initial',
                                             }}
                                         />
                                         <AiOutlineCheckCircle
                                             className='success-icon'
                                             style={{
-                                                display: !success
-                                                    ? 'none'
-                                                    : 'inline-flex',
+                                                display: !success ? 'none' : 'inline-flex',
                                                 opacity: !success ? '0' : '1',
                                             }}
                                         />
@@ -271,8 +244,8 @@ function Contacts() {
                                     </React.Fragment>
                                 }
                                 style={{
-                                    backgroundColor: theme.primary,
-                                    color: theme.secondary,
+                                    backgroundColor: theme.secondary,
+                                    color: theme.primary,
                                     fontFamily: 'var(--primaryFont)',
                                 }}
                                 message={errMsg}
@@ -281,35 +254,23 @@ function Contacts() {
                     </div>
 
                     <div className='contacts-details'>
-                        <a
-                            href={`mailto:${contactsData.email}`}
-                            className='personal-details'
-                        >
+                        <a href={`mailto:${contactsData.email}`} className='personal-details'>
                             <div className={classes.detailsIcon}>
                                 <FiAtSign />
                             </div>
-                            <p style={{ color: theme.tertiary }}>
-                                {contactsData.email}
-                            </p>
+                            <p style={{ color: theme.secondary }}>{contactsData.email}</p>
                         </a>
-                        <a
-                            href={`tel:${contactsData.phone}`}
-                            className='personal-details'
-                        >
+                        <a href={`tel:${contactsData.phone}`} className='personal-details'>
                             <div className={classes.detailsIcon}>
                                 <FiPhone />
                             </div>
-                            <p style={{ color: theme.tertiary }}>
-                                {contactsData.phone}
-                            </p>
+                            <p style={{ color: theme.secondary }}>{contactsData.phone}</p>
                         </a>
                         <div className='personal-details'>
                             <div className={classes.detailsIcon}>
                                 <HiOutlineLocationMarker />
                             </div>
-                            <p style={{ color: theme.tertiary }}>
-                                {contactsData.address}
-                            </p>
+                            <p style={{ color: theme.secondary }}>{contactsData.address}</p>
                         </div>
 
                         <div className='socialmedia-icons'>
@@ -427,11 +388,7 @@ function Contacts() {
                     </div>
                 </div>
             </div>
-            <img
-                src={theme.contactsimg}
-                alt='contacts'
-                className='contacts--img'
-            />
+            <img src={theme.contactsimg} alt='contacts' className='contacts--img' />
         </div>
     );
 }
