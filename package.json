@@ -29,6 +29,9 @@
     "test": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts test",
     "eject": "react-scripts eject"
   },
+  "engines": {
+  "node": "16.x"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
