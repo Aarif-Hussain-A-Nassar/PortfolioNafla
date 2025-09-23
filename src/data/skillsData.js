@@ -1,17 +1,42 @@
- export const skillsData = [
-    'HTML',
-    'Fastify',
-    'Blender',
-    'Figma',
-    'Javascript',
-    'CSS',
-    'React',
-    'Django',
-]
+export const skillsData = [
+  // Languages
+  "Java",
+  "C",
+  "C++",
+  "Javascript",
+  "HTML",
+  "CSS",
+
+  // Frameworks & Libraries
+  "SpringBoot",
+  "JUnit",
+   // if needed
+
+  // Build & Dependency Management
+  "Maven",
+
+  // Cloud & Containerization
+  "Kubernetes",
+  "Docker",
+
+  // DevOps / Version Control
+  "Git",
+
+  // Tools & IDEs
+  "Eclipse",
+  "IntelliJ IDEA",
+  "VS Code",
+  "Linux", // bash scripting included
+
+  // Software Practices
+  "Agile",
+
+  // AI & Productivity Tools
+  "GitHub Copilot",
+];
 
 // Choose your skills from below. Make sure it's in the same format and spelled correctly.
 // Couldn't find the required skills? Raise an issue on github at https://github.com/hhhrrrttt222111/developer-portfolio/issues/new
-
 
 // AVAILABLE SKILLS
 
