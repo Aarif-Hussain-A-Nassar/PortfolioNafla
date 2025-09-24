@@ -312,12 +312,13 @@ function Contacts() {
                 </a>
               )}
               {socialsData.vsc0 && (
-                <a href={socialsData.vsc0} target="_blank" rel="noreferrer">
-                  <SiVsco
-                    className="landing--social"
-                    style={{ color: theme.secondary }}
-                    aria-label="VSCO"
-                  />
+                <a
+                  href={socialsData.vsc0}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={classes.socialIcon}
+                >
+                  <SiVsco />
                 </a>
               )}
             </div>
