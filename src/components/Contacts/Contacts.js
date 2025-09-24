@@ -6,8 +6,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import { AiOutlineSend, AiOutlineCheckCircle } from "react-icons/ai";
 import { FiAtSign, FiPhone } from "react-icons/fi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { FaGithub, FaLinkedinIn, FaInstagram, FaEnvelope } from "react-icons/fa";
-
+import {
+  FaGithub,
+  FaLinkedinIn,
+  FaInstagram,
+  FaEnvelope,
+} from "react-icons/fa";
+import { SiVsco } from "react-icons/si";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { socialsData } from "../../data/socialsData";
 import { contactsData } from "../../data/contactsData";
@@ -148,14 +153,20 @@ function Contacts() {
   };
 
   return (
-    <div className="contacts" id="contacts" style={{ backgroundColor: theme.primary }}>
+    <div
+      className="contacts"
+      id="contacts"
+      style={{ backgroundColor: theme.primary }}
+    >
       <div className="contacts--container">
         <h1 style={{ color: theme.secondary }}>Contacts</h1>
         <div className="contacts-body">
           <div className="contacts-form">
             <form onSubmit={handleContactForm}>
               <div className="input-container">
-                <label htmlFor="Name" className={classes.label}>Name</label>
+                <label htmlFor="Name" className={classes.label}>
+                  Name
+                </label>
                 <input
                   placeholder="John Doe"
                   value={name}
@@ -166,7 +177,9 @@ function Contacts() {
                 />
               </div>
               <div className="input-container">
-                <label htmlFor="Email" className={classes.label}>Email</label>
+                <label htmlFor="Email" className={classes.label}>
+                  Email
+                </label>
                 <input
                   placeholder="John@doe.com"
                   value={email}
@@ -177,7 +190,9 @@ function Contacts() {
                 />
               </div>
               <div className="input-container">
-                <label htmlFor="Message" className={classes.label}>Message</label>
+                <label htmlFor="Message" className={classes.label}>
+                  Message
+                </label>
                 <textarea
                   placeholder="Type your message..."
                   value={message}
@@ -195,7 +210,9 @@ function Contacts() {
                     <AiOutlineSend
                       className="send-icon"
                       style={{
-                        animation: !success ? "initial" : "fly 0.8s linear both",
+                        animation: !success
+                          ? "initial"
+                          : "fly 0.8s linear both",
                         position: success ? "absolute" : "initial",
                       }}
                     />
@@ -219,7 +236,12 @@ function Contacts() {
             >
               <SnackbarContent
                 action={
-                  <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+                  <IconButton
+                    size="small"
+                    aria-label="close"
+                    color="inherit"
+                    onClick={handleClose}
+                  >
                     <CloseIcon fontSize="small" />
                   </IconButton>
                 }
@@ -234,20 +256,70 @@ function Contacts() {
           </div>
 
           <div className="contacts-details">
-            <a href={`mailto:${contactsData.email}`} className="personal-details">
-              <div className={classes.detailsIcon}><FiAtSign /></div>
+            <a
+              href={`mailto:${contactsData.email}`}
+              className="personal-details"
+            >
+              <div className={classes.detailsIcon}>
+                <FiAtSign />
+              </div>
               <p style={{ color: theme.secondary }}>{contactsData.email}</p>
             </a>
             <div className="personal-details">
-              <div className={classes.detailsIcon}><HiOutlineLocationMarker /></div>
+              <div className={classes.detailsIcon}>
+                <HiOutlineLocationMarker />
+              </div>
               <p style={{ color: theme.secondary }}>{contactsData.address}</p>
             </div>
 
             <div className="socialmedia-icons">
-              {socialsData.github && <a href={socialsData.github} target="_blank" rel="noreferrer" className={classes.socialIcon}><FaGithub /></a>}
-              {socialsData.linkedIn && <a href={socialsData.linkedIn} target="_blank" rel="noreferrer" className={classes.socialIcon}><FaLinkedinIn /></a>}
-              {socialsData.instagram && <a href={socialsData.instagram} target="_blank" rel="noreferrer" className={classes.socialIcon}><FaInstagram /></a>}
-              {socialsData.email && <a href={`mailto:${socialsData.email}`} className={classes.socialIcon}><FaEnvelope /></a>}
+              {socialsData.github && (
+                <a
+                  href={socialsData.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={classes.socialIcon}
+                >
+                  <FaGithub />
+                </a>
+              )}
+              {socialsData.linkedIn && (
+                <a
+                  href={socialsData.linkedIn}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={classes.socialIcon}
+                >
+                  <FaLinkedinIn />
+                </a>
+              )}
+              {socialsData.instagram && (
+                <a
+                  href={socialsData.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={classes.socialIcon}
+                >
+                  <FaInstagram />
+                </a>
+              )}
+              {socialsData.email && (
+                <a
+                  href={`mailto:${socialsData.email}`}
+                  className={classes.socialIcon}
+                >
+                  <FaEnvelope />
+                </a>
+              )}
+              {socialsData.vsc0 && (
+                <a href={socialsData.vsc0} target="_blank" rel="noreferrer">
+                  <SiVsco
+                    className="landing--social"
+                    style={{ color: theme.secondary }}
+                    aria-label="VSCO"
+                  />
+                </a>
+              )}
             </div>
           </div>
         </div>
