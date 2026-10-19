@@ -305,7 +305,9 @@ function Contacts() {
               )}
               {socialsData.email && (
                 <a
-                  href={`mailto:${socialsData.email}`}
+                  href={socialsData.email.startsWith("http") ? socialsData.email : `mailto:${socialsData.email}`}
+                  target="_blank"
+                  rel="noreferrer"
                   className={classes.socialIcon}
                 >
                   <FaEnvelope />
